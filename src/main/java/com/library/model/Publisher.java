@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "publishers")
@@ -20,17 +19,9 @@ public class Publisher {
 	@Column(name = "address")
 	private String address;
 
-//	@OneToOne(fetch = FetchType.LAZY, optional = false)
-//	@JoinColumn(name = "bookId", nullable = false)
-//	private Book book;
-
-//	@OneToMany(mappedBy = "bookId", fetch = FetchType.LAZY,
-//			cascade = CascadeType.ALL)
-//	private Set<Book> books;
 	@JsonManagedReference
 	@OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL)
-//	@JoinColumn(name = "bookId", referencedColumnName = "bookId")
 	private List<Book> books;
 
 	public Publisher() {
@@ -75,12 +66,4 @@ public class Publisher {
 		this.books = books;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Publisher{" +
-//				"publisherId=" + publisherId +
-//				", name='" + name + '\'' +
-//				", address='" + address + '\'' +
-//				'}';
-//	}
 }

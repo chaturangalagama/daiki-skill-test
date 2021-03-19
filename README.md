@@ -96,4 +96,12 @@ Use following URL - http://localhost:8080/api/author
 
 Publisher name should be set as name=author_name (Ex:name=Rahim)
 
+-----------------------------------------
+
+Sample GET request to get the publisher of the book- 
+
+Use following URL - http://localhost:8080/api/publisher_by_book
+
+Book name should be set as name=book_name (Ex:name=The inception)
+
 

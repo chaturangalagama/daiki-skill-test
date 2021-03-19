@@ -20,17 +20,9 @@ public class Author {
 	@Column(name = "address")
 	private String address;
 
-
-//	@OneToOne(fetch = FetchType.LAZY, optional = false)
-//	@JoinColumn(name = "bookId", nullable = false)
-//	private Book book;
-
-	//	@OneToMany(mappedBy = "bookId", fetch = FetchType.LAZY,
-//			cascade = CascadeType.ALL)
 	@JsonManagedReference
 	@OneToMany(mappedBy = "author", fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL)
-//	@JoinColumn(name = "bookId", referencedColumnName = "bookId")
 	private List<Book> books;
 
 	public Author() {
@@ -75,12 +67,4 @@ public class Author {
 		this.books = books;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Author{" +
-//				"authorId=" + authorId +
-//				", name='" + name + '\'' +
-//				", address='" + address + '\'' +
-//				'}';
-//	}
 }

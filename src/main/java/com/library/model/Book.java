@@ -15,36 +15,16 @@ public class Book {
 	@Column(name = "name")
 	private String name;
 
-//	@OneToOne(fetch = FetchType.LAZY,
-//			cascade =  CascadeType.ALL,
-//			mappedBy = "book")
-//	private Publisher publisher;
-//
-//	@OneToOne(fetch = FetchType.LAZY,
-//			cascade =  CascadeType.ALL,
-//			mappedBy = "book")
-//	private Author author;
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "book", nullable = false, insertable=false, updatable=false)
 	private Publisher publisher;
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "book", nullable = false, insertable=false, updatable=false)
 	private Author author;
-
-//	@Column(name = "publisherId")
-//	private long publisherId;
-//
-//	@Column(name = "authorId")
-//	private long authorId;
 
 	@Column(name = "price")
 	private Double price;
-
-//	@Column(name = "published")
-//	private boolean published;
 
 	public Book() {
 
@@ -97,55 +77,5 @@ public class Book {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
-//	@Override
-//	public String toString() {
-//		return "Book{" +
-//				"bookId=" + bookId +
-//				", name='" + name + '\'' +
-//				", publisher='" + publisher + '\'' +
-//				", author='" + author + '\'' +
-//				", price=" + price +
-//				'}';
-//	}
-
-	//	public Book(String title, String description, boolean published) {
-//		this.title = title;
-//		this.description = description;
-//		this.published = published;
-//	}
-//
-//	public long getId() {
-//		return id;
-//	}
-//
-//	public String getTitle() {
-//		return title;
-//	}
-//
-//	public void setTitle(String title) {
-//		this.title = title;
-//	}
-//
-//	public String getDescription() {
-//		return description;
-//	}
-//
-//	public void setDescription(String description) {
-//		this.description = description;
-//	}
-//
-//	public boolean isPublished() {
-//		return published;
-//	}
-//
-//	public void setPublished(boolean isPublished) {
-//		this.published = isPublished;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Tutorial [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
-//	}
 
 }
