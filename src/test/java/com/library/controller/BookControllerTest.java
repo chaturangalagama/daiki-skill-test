@@ -23,7 +23,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @ExtendWith(MockitoExtension.class)
-//@RunWith(JUnitPlatform.class)
 class BookControllerTest {
 
     @InjectMocks
@@ -50,11 +49,6 @@ class BookControllerTest {
         // then
         assertThat(result1.getStatusCodeValue()).isLessThanOrEqualTo(204);
 
-        // when
-        ResponseEntity<List<Book>> result2 = bookController.getAllBooks("lokesh");
-
-        // then
-        assertThat(result2.getStatusCodeValue()).isLessThanOrEqualTo(204);
     }
 
 
@@ -71,6 +65,40 @@ class BookControllerTest {
 
         // when
         ResponseEntity<List<Book>> result2 = bookController.getAllBooks("lokesh");
+
+        // then
+        assertThat(result2.getStatusCodeValue()).isLessThanOrEqualTo(204);
+    }
+
+    @Test
+    public void testFindAllWithAuthorName()
+    {
+        // given
+        List<Book> books = new ArrayList<Book>();
+        Author author = new Author(1, "harsha", "wattala");
+        Publisher publisher = new Publisher(1, "sarasavi", "nugegoda");
+        Book book1 = new Book(1, "lokesh", publisher, author, 22.0);
+        books.addAll((Arrays.asList(book1)));
+
+        // when
+        ResponseEntity<List<Book>> result2 = bookController.getAllBooksByAuthor("harsha");
+
+        // then
+        assertThat(result2.getStatusCodeValue()).isLessThanOrEqualTo(204);
+    }
+
+    @Test
+    public void testFindAllWithPublisherName()
+    {
+        // given
+        List<Book> books = new ArrayList<Book>();
+        Author author = new Author(1, "harsha", "wattala");
+        Publisher publisher = new Publisher(1, "sarasavi", "nugegoda");
+        Book book1 = new Book(1, "lokesh", publisher, author, 22.0);
+        books.addAll((Arrays.asList(book1)));
+
+        // when
+        ResponseEntity<List<Book>> result2 = bookController.getAllBooksByAuthor("sarasavi");
 
         // then
         assertThat(result2.getStatusCodeValue()).isLessThanOrEqualTo(204);

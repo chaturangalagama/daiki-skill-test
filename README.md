@@ -1,5 +1,6 @@
 # A basic library catalogue system using Spring Boot, H2 Database, and Spring Data JPA
 
+
 ## Run Spring Boot application
 ```
 mvn spring-boot:run
@@ -68,7 +69,7 @@ VALUES
 
 # Then test APIs using Swagger:
 
-http://localhost:8080/swagger-ui.html
+Go to http://localhost:8080/swagger-ui.html
 
 -----------------------------------------
 
