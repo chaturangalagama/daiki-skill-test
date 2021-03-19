@@ -5,19 +5,36 @@
 mvn spring-boot:run
 ```
 
-# Initialize DB with following values:
+# Initialize DB:
+
+Go to http://localhost:8080/h2-ui/
+
+Use JDBC URL - jdbc:h2:mem:testdb
+
+Username - sa
+
+Password -
+
+And then connect to H2 DB
+
+-----------------------------------------
+
+Initialize DB with following values
 
 INSERT INTO BOOKS (
     BOOK_ID
 ,   NAME
 ,   PRICE
 )
+
 VALUES
-    (1, 'Ram', 22)
-,   (2, 'Rahim', 23)
-,   (3, 'Pankaj', 222)
-,   (4, 'Rahim', 342)
-,   (5, 'Mohan', 20);
+    (1, 'Rich dad poor dad', 22)
+,   (2, 'The inception', 23)
+,   (3, 'Dark night', 222)
+,   (4, 'Spring boot 2', 342)
+,   (5, 'Modern AI applications', 20);
+
+-----------------------------------------
 
 INSERT INTO AUTHORS (
     AUTHOR_ID
@@ -25,6 +42,7 @@ INSERT INTO AUTHORS (
 ,   NAME
 ,   BOOK_ID
 )
+
 VALUES
     (1, 'RamADD', 'Ram', 3)
 ,   (2, 'RaHImADD', 'Rahim', 1)
@@ -32,6 +50,7 @@ VALUES
 ,   (4, 'RaHImADD', 'Rahim', 5)
 ,   (5, 'MohanADD', 'Mohan', 2);
 
+-----------------------------------------
 
 INSERT INTO PUBLISHERS (
     PUBLISHER_ID
@@ -39,6 +58,7 @@ INSERT INTO PUBLISHERS (
 ,   NAME
 ,   BOOK_ID
 )
+
 VALUES
     (1, 'JenaPubADD', 'Jena', 3)
 ,   (2, 'NimalPubADD', 'Nimal', 1)
@@ -46,30 +66,38 @@ VALUES
 ,   (4, 'GunasenaADD', 'Gunasena', 2);
 
 
-# Then test using postman requests at port 8080:
+# Then test APIs using Swagger:
+
+http://localhost:8080/swagger-ui.html
+
+-----------------------------------------
+
+Sample GET request to get all the books - 
+
+Use following URL - http://localhost:8080/api/books
+
+-----------------------------------------
+
+Sample GET request to see publisher information of a selected book- 
+
+Use following URL - http://localhost:8080/api/books
+
+Publisher name should be set as name=book_name (Ex:name=Modern AI applications)
+
+-----------------------------------------
 
 Sample GET request to get all the books which are published by a specific publisher- 
-Use following URL - http://localhost:8080/api/publisher?name=Sarasavi
-Publisher name should be set as ?name=Sarasavi
-Body should be set as "raw" and "JSON"
 
-Sample GET response -
+Use following URL - http://localhost:8080/api/publisher
 
-[
-    {
-        "bookId": 4,
-        "name": "Rahim",
-        "publisher": {
-            "publisherId": 3,
-            "name": "Sarasavi",
-            "address": "SarasaviADD"
-        },
-        "author": {
-            "authorId": 3,
-            "name": "Pankaj",
-            "address": "PankajADD"
-        },
-        "price": 342.0
-    }
-]
+Publisher name should be set as name=publisher_name (Ex:name=Sarasavi)
+
+-----------------------------------------
+
+Sample GET request to get all the books which are authored by a specific author- 
+
+Use following URL - http://localhost:8080/api/author
+
+Publisher name should be set as name=author_name (Ex:name=Rahim)
+
 
