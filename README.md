@@ -22,49 +22,44 @@ And then connect to H2 DB
 
 Initialize DB with following values
 
-INSERT INTO BOOKS (
-    BOOK_ID
-,   NAME
-,   PRICE
-)
-
-VALUES
-    (1, 'Rich dad poor dad', 22)
-,   (2, 'The inception', 23)
-,   (3, 'Dark night', 222)
-,   (4, 'Spring boot 2', 342)
-,   (5, 'Modern AI applications', 20);
-
------------------------------------------
-
 INSERT INTO AUTHORS (
     AUTHOR_ID
 ,   ADDRESS
 ,   NAME
-,   BOOK_ID
+
 )
-
 VALUES
-    (1, 'RamADD', 'Ram', 3)
-,   (2, 'RaHImADD', 'Rahim', 1)
-,   (3, 'PankajADD', 'Pankaj', 4)
-,   (4, 'RaHImADD', 'Rahim', 5)
-,   (5, 'MohanADD', 'Mohan', 2);
+    (1, 'RamADD', 'Ram')
+,   (2, 'RaHImADD', 'Rahim')
+,   (3, 'PankajADD', 'Pankaj')
+,   (4, 'MohanADD', 'Mohan');
 
------------------------------------------
 
 INSERT INTO PUBLISHERS (
     PUBLISHER_ID
 ,   ADDRESS
 ,   NAME
-,   BOOK_ID
 )
-
 VALUES
-    (1, 'JenaPubADD', 'Jena', 3)
-,   (2, 'NimalPubADD', 'Nimal', 1)
-,   (3, 'SarasaviADD', 'Sarasavi', 4)
-,   (4, 'GunasenaADD', 'Gunasena', 2);
+    (1, 'JenaPubADD', 'Jena')
+,   (2, 'NimalPubADD', 'Nimal')
+,   (3, 'SarasaviADD', 'Sarasavi')
+,   (4, 'GunasenaADD', 'Gunasena');
+
+
+INSERT INTO BOOKS (
+    BOOK_ID
+,   NAME
+,   PRICE
+,   AUTHOR_AUTHOR_ID
+,   PUBLISHER_PUBLISHER_ID
+)
+VALUES
+    (1, 'Rich dad poor dad', 22, 1, 1)
+,   (2, 'The inception', 23, 2, 4)
+,   (3, 'Dark night', 222, 1, 2)
+,   (4, 'Spring boot 2', 342, 4, 2)
+,   (5, 'Modern AI applications', 20, 2, 3);
 
 
 # Then test APIs using Swagger:

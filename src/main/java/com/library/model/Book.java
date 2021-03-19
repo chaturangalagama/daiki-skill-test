@@ -1,5 +1,7 @@
 package com.library.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,15 +15,30 @@ public class Book {
 	@Column(name = "name")
 	private String name;
 
-	@OneToOne(fetch = FetchType.LAZY,
-			cascade =  CascadeType.ALL,
-			mappedBy = "book")
+//	@OneToOne(fetch = FetchType.LAZY,
+//			cascade =  CascadeType.ALL,
+//			mappedBy = "book")
+//	private Publisher publisher;
+//
+//	@OneToOne(fetch = FetchType.LAZY,
+//			cascade =  CascadeType.ALL,
+//			mappedBy = "book")
+//	private Author author;
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "book", nullable = false, insertable=false, updatable=false)
 	private Publisher publisher;
 
-	@OneToOne(fetch = FetchType.LAZY,
-			cascade =  CascadeType.ALL,
-			mappedBy = "book")
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "book", nullable = false, insertable=false, updatable=false)
 	private Author author;
+
+//	@Column(name = "publisherId")
+//	private long publisherId;
+//
+//	@Column(name = "authorId")
+//	private long authorId;
 
 	@Column(name = "price")
 	private Double price;
@@ -81,16 +98,16 @@ public class Book {
 		this.price = price;
 	}
 
-	@Override
-	public String toString() {
-		return "Book{" +
-				"bookId=" + bookId +
-				", name='" + name + '\'' +
-				", publisher='" + publisher + '\'' +
-				", author='" + author + '\'' +
-				", price=" + price +
-				'}';
-	}
+//	@Override
+//	public String toString() {
+//		return "Book{" +
+//				"bookId=" + bookId +
+//				", name='" + name + '\'' +
+//				", publisher='" + publisher + '\'' +
+//				", author='" + author + '\'' +
+//				", price=" + price +
+//				'}';
+//	}
 
 	//	public Book(String title, String description, boolean published) {
 //		this.title = title;
